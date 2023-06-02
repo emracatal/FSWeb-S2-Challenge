@@ -99,13 +99,15 @@ function cumleKur(
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
-
+console.log(cumleKur("Hello World!"));
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
-
+console.log(cumleKur("Hello ","World!"));
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
+bircumle = cumleKur("Ben ","iyi ","bir ","yazılımcı ","olacağım!")
+console.log(bircumle);
 
 /* kodlar buraya */
 
@@ -128,9 +130,13 @@ var bircumle;
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
 
-function cumlelereDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cumlelereDonustur(cumlelerDz, ayrac=",") {
+  const sonuc = cumlelerDz.map((kelimeDz)=> kelimeDz.join(ayrac));
+  return sonuc;
 }
+
+console.log("g1",cumlelereDonustur(cumleler, " "));
+
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -145,24 +151,40 @@ function cumlelereDonustur(/* kodlar buraya */) {
 			6. Oluşturulan paragraf döndürülecek
 	*/
 
-function paragrafOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
-}
+function paragrafOlustur(
+  cumlelerDz,
+  cumleKurCB,
+  cumlelereDonusturCB) {
 
+  const yeniCumleler = cumlelereDonusturCB(cumlelerDz," ")
+  return cumleKurCB(
+    yeniCumleler[1],
+      yeniCumleler[3],
+      yeniCumleler[5],
+      yeniCumleler[7],
+      yeniCumleler[9])
+}
+console.log("g2",paragrafOlustur(cumleler, cumleKur,cumlelereDonustur))
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
+console.log("g3-1",meyveler);
+meyveler.pop()
+meyveler.shift()
+console.log("g3-2",meyveler);
 
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , 
 Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise 
 arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, 
 Kirpiyi dizinin son elemanına ekleyin 🦔
  */
-//3b çözümü
-/* kodlar buraya */
+console.log("g3b-1",sebzeler);
+sebzeler.unshift("🐇")
+sebzeler.push("🦔")
+console.log("g3b-2",sebzeler);
+
 
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son 
 elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
@@ -171,6 +193,9 @@ elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine 
 /* kodlar buraya */
 
 var manav;
+manav = [...meyveler,...sebzeler]
+//manav = meyveler.concat(sebzeler)
+console.log("g3c",manav)
 
 /* 	GÖREV 4:
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. 
